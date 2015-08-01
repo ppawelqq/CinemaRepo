@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-18 18:45:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kino.Film" table="film" catalog="test_mysql" optimistic-lock="version">
+        <id name="idFilm" type="java.lang.Integer">
+            <column name="id_film" />
+            <generator class="identity" />
+        </id>
+        <property name="tytul" type="string">
+            <column name="tytul" length="45" />
+        </property>
+        <property name="rezyser" type="string">
+            <column name="rezyser" length="45" />
+        </property>
+        <property name="produkcja" type="string">
+            <column name="produkcja" length="45" />
+        </property>
+        <property name="opis" type="string">
+            <column name="opis" length="65535" />
+        </property>
+        <property name="gatunek" type="string">
+            <column name="gatunek" length="20" />
+        </property>
+        <property name="cena" type="string">
+            <column name="cena" length="10" />
+        </property>
+        <property name="WWiek" type="string">
+            <column name="w_wiek" length="4" />
+        </property>
+        <property name="czasTrwania" type="java.lang.Float">
+            <column name="czas_trwania" precision="12" scale="0" />
+        </property>
+        <set name="seanses" table="seans" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_film" not-null="true" />
+            </key>
+            <one-to-many class="kino.Seans" />
+        </set>
+    </class>
+</hibernate-mapping>

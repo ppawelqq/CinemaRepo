@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-18 18:45:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kino.Rezerwacja" table="rezerwacja" catalog="test_mysql" optimistic-lock="version">
+        <id name="idRezerwacja" type="java.lang.Integer">
+            <column name="id_rezerwacja" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="klient" class="kino.Klient" fetch="select">
+            <column name="id_klient" not-null="true" />
+        </many-to-one>
+        <property name="potwierdzona" type="java.lang.Boolean">
+            <column name="potwierdzona" />
+        </property>
+        <set name="bilets" table="bilet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_rezerwacja" not-null="true" />
+            </key>
+            <one-to-many class="kino.Bilet" />
+        </set>
+    </class>
+</hibernate-mapping>

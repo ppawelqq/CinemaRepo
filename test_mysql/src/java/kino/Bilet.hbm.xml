@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-18 18:45:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kino.Bilet" table="bilet" catalog="test_mysql" optimistic-lock="version">
+        <composite-id name="id" class="kino.BiletId">
+            <key-property name="idBilet" type="int">
+                <column name="id_bilet" />
+            </key-property>
+            <key-property name="idMiejsce" type="int">
+                <column name="id_miejsce" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="miejsce" class="kino.Miejsce" update="false" insert="false" fetch="select">
+            <column name="id_miejsce" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rezerwacja" class="kino.Rezerwacja" fetch="select">
+            <column name="id_rezerwacja" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seans" class="kino.Seans" fetch="select">
+            <column name="id_seans" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

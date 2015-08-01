@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+
+        
+      <ui:define name="top">
+         SYSTEM REZERWACJI BILETOW 
+      </ui:define>
+        
+        
+      <ui:define name="body">
+      
+          
+          <h:dataTable value="#{seans_kontroler.seanse}" var="item2" border="0" 
+                       cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" 
+                       rules="all" style="border:solid 1px">
+             
+                   <h:column>
+                        
+                        <f:facet name="header">
+                            <h:outputText value="Godzina"/>
+                        </f:facet>
+                       <h:outputText value="#{item2.godzina}"/>
+                            
+                    </h:column>   
+          
+          </h:dataTable>
+          
+      </ui:define>
+          
+</ui:composition>
+

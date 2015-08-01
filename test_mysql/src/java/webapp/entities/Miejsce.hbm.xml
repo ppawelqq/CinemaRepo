@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-18 18:45:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kino.Miejsce" table="miejsce" catalog="test_mysql" optimistic-lock="version">
+        <id name="idMiejsce" type="java.lang.Integer">
+            <column name="id_miejsce" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sala" class="kino.Sala" fetch="select">
+            <column name="id_sala" not-null="true" />
+        </many-to-one>
+        <property name="sektor" type="java.lang.Integer">
+            <column name="sektor" />
+        </property>
+        <property name="rzad" type="java.lang.Integer">
+            <column name="rzad" />
+        </property>
+        <set name="bilets" table="bilet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_miejsce" not-null="true" />
+            </key>
+            <one-to-many class="kino.Bilet" />
+        </set>
+    </class>
+</hibernate-mapping>

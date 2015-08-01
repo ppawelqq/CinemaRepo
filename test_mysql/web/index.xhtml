@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+     <ui:composition template="./template.xhtml">
+         
+         
+         
+    <ui:define name="top">
+         SYSTEM REZERWACJI BILETOW 
+    </ui:define>
+        
+         
+    <ui:define name="body">
+         <h:form styleClass="jsfcrud_list_form">
+                <h:commandLink action="#{film_kontroler.previous}" value="Previous #{film_kontroler.pageSize}" rendered="#{film_kontroler.hasPreviousPage}"/>
+                <h:commandLink action="#{film_kontroler.next}" value="Next #{film_kontroler.pageSize}" rendered="#{film_kontroler.hasNextPage}"/>
+                
+                <h:dataTable value="#{film_kontroler.filmTitles}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+             
+                    <h:column>
+                        
+                        <f:facet name="header">
+                            <h:outputText value="Tytul"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tytul}"/>
+                            
+                    </h:column>   
+                    
+                    
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Gatunek: "/>
+                        </f:facet>
+                        <h:outputText value="#{item.gatunek}"/>
+                    
+                     </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandLink action="#{film_kontroler.prepareView}" value="Szczegoly  "/>
+                        
+                        
+                       
+                        
+                    </h:column>
+                </h:dataTable>
+                
+            </h:form>
+    </ui:define>
+  
+
+     </ui:composition>
+</html>
+

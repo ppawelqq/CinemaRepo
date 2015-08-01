@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="top">
+         SYSTEM REZERWACJI BILETOW 
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <h:panelGrid columns="2">
+                    <h:outputText value="Tytul: "/>
+                    <h:outputText value="#{film_kontroler.selected.tytul}" title="Tytul"/>
+                    <h:outputText value="Rezyseria: "/>
+                    <h:outputText value="#{film_kontroler.selected.rezyser}" title="Rezyseria"/>
+                    <h:outputText value="Produkcja: "/> 
+                    <h:outputText value="#{film_kontroler.selected.produkcja}" title="Produkcja"/>
+                    <h:outputText value="Opis: "/> 
+                    <h:outputText value="#{film_kontroler.selected.opis}" title="Opis"/>
+                    <h:outputText value="Gatunek: "/>
+                    <h:outputText value="#{film_kontroler.selected.gatunek}" title="Gatunek"/>
+                    <h:outputText value="Cena: "/>
+                    <h:outputText value="#{film_kontroler.selected.cena}" title="Cena"/>
+                    <h:outputText value="Wiek: "/>
+                    <h:outputText value="#{film_kontroler.selected.WWiek}" title="Wiek"/>
+                    <h:outputText value="Czas trwania: "/>
+                    <h:outputText value="#{film_kontroler.selected.czasTrwania}" title="Czas trwania"/>
+                    
+                    
+                    
+                                  
+                     
+            </h:panelGrid>
+                <br/>
+                <br/>
+                
+                <h:commandLink action="#{seans_kontroler.prepareView}"  value="Wyswietl seanse"/> <br />
+                <h:commandLink action="#{film_kontroler.prepareList}"  value="Powrot"/> <br />
+                  </h:form>
+   
+        
+    </ui:define>
+
+</ui:composition>

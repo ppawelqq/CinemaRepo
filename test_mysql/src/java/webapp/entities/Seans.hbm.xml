@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-18 18:45:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="kino.Seans" table="seans" catalog="test_mysql" optimistic-lock="version">
+        <id name="idSeans" type="java.lang.Integer">
+            <column name="id_seans" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="film" class="kino.Film" fetch="select">
+            <column name="id_film" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sala" class="kino.Sala" fetch="select">
+            <column name="id_sala" not-null="true" />
+        </many-to-one>
+        <property name="data" type="date">
+            <column name="data" length="10" />
+        </property>
+        <property name="godzina" type="time">
+            <column name="godzina" length="8" />
+        </property>
+        <set name="bilets" table="bilet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_seans" not-null="true" />
+            </key>
+            <one-to-many class="kino.Bilet" />
+        </set>
+    </class>
+</hibernate-mapping>
